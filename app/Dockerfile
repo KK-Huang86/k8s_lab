@@ -1,0 +1,17 @@
+FROM php:apache
+
+# From Environment Variable
+ARG MESSAGE
+ENV MESSAGE=$MESSAGE
+
+# From ConfigMap
+ARG USERNAME
+ENV USERNAME=$USERNAME
+
+# From Secret
+ARG PASSWORD
+ENV PASSWORD=$PASSWORD
+
+COPY src /var/www/html
+EXPOSE 80
+
