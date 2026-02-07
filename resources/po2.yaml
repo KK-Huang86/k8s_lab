@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: po2
+  labels:
+    app: po2
+spec:
+  containers:
+    - name: k8s-demo-app
+      image: vup4k0806/k8s-demo-app:latest
+      env:
+        - name: MESSAGE
+          value: "Hello from po2."
+        - name: USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: cm2
+              key: USERNAME
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secret2
+              key: PASSWORD
+      ports:
+        - containerPort: 80
