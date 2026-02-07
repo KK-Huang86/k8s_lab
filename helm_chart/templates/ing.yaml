@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ing{{ .Values.nsId }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: foo.bar.com
+      http:
+        paths:
+          - path: /po{{ .Values.nsId }}
+            pathType: Prefix
+            backend:
+              service:
+                name: po{{ .Values.nsId }}-svc
+                port:
+                  number: 80
+          - path: /deploy{{ .Values.nsId }}
+            pathType: Prefix
+            backend:
+              service:
+                name: deploy{{ .Values.nsId }}-svc
+                port:
+                  number: 80

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deploy{{ .Values.nsId }}-svc
+spec:
+  selector:
+    app: deploy{{ .Values.nsId }}
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

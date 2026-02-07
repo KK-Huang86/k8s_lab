@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy{{ .Values.nsId }}
+  labels:
+    app: deploy{{ .Values.nsId }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: deploy{{ .Values.nsId }}
+  template:
+    metadata:
+      name: deploy{{ .Values.nsId }}
+      labels:
+        app: deploy{{ .Values.nsId }}
+    spec:
+      containers:
+        - name: k8s-demo-app
+          image: vup4k0806/k8s-demo-app:latest
+          env:
+            - name: MESSAGE
+              value: "Hello from deploy{{ .Values.nsId }}."
+            - name: USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: cm{{ .Values.nsId }}
+                  key: USERNAME
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret{{ .Values.nsId }}
+                  key: PASSWORD
+          ports:
+            - containerPort: 80
