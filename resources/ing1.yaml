@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ing1
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: foo.bar.com
+      http:
+        paths:
+          - path: /po1
+            pathType: Prefix
+            backend:
+              service:
+                name: po1-svc # po1 導向 po1-svc
+                port:
+                  number: 80
+          - path: /deploy1
+            pathType: Prefix
+            backend:
+              service:
+                name: deploy1-svc # deploy1 導向 deploy1-svc
+                port:
+                  number: 80
