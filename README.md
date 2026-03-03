@@ -1,6 +1,6 @@
 # Kubernetes Lab
 
-跟隨[這部 YouTube 教學 -- 二十一分鐘略懂 Kubernetes (以及 Helm)](https://www.youtube.com/watch?v=RUjcGn2YeVo&t=412s)實作的練習專案，透過 Minikube 實際操作 Kubernetes 的核心概念：叢集節點、Pod、ConfigMap、Secret、Service、Ingress，以及跨 namespace 的 Pod 互通。
+跟隨YouTube 教學[二十一分鐘略懂 Kubernetes (以及 Helm)](https://www.youtube.com/watch?v=RUjcGn2YeVo&t=412s)實作的練習專案，透過 Minikube 實際操作 Kubernetes 的核心概念：叢集節點、Pod、ConfigMap、Secret、Service、Ingress，以及跨 namespace 的 Pod 互通。
 
 ---
 
